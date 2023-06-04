@@ -18,11 +18,10 @@ const Formulario = () => {
         try {
                 if(pais !== "" & ciudad !== "")
                 {
-               const respuesta = await fetch(`https://api.openweathermap.org/data/2.5/weather?&lang=es&q=${ciudad},${pais}&appid=0f0a5e1bc31c0328bec625ffcadc1bd3`)
+               const respuesta = await fetch(`https://api.openweathermap.org/data/2.5/weather?&lang=es&q=${ciudad},${pais}&units=metric&appid=0f0a5e1bc31c0328bec625ffcadc1bd3`)
                 const dato = await respuesta.json()
                 console.log(dato);
                 setClima([dato])
-                console.log(clima);
                 }
             }
         catch (error) {
@@ -34,12 +33,12 @@ const Formulario = () => {
             <Form onSubmit={handleSubmit}>
             <Form.Group className="my-3 justify-content-center d-flex" controlId="formPais">
             <Form.Label className="d-inline fs-4">Ingresar el pais: </Form.Label>
-            <Form.Control type="text" className="d-inline w-50 ms-3 mb-4" aria-label="Pais" onChange={(e) => setPais(e.target.value)} value={pais}>
+            <Form.Control type="text" className="d-inline w-50 ms-3 mb-4" aria-label="Pais" placeholder="Ej. Argentina" onChange={(e) => setPais(e.target.value)} value={pais}>
             </Form.Control>
             </Form.Group>
             <Form.Group className="my-3 justify-content-center d-flex" controlId="formCiudad">
             <Form.Label className="d-inline fs-4">Ingrese la ciudad: </Form.Label>
-            <Form.Control type="text" className="d-inline w-50 ms-3 mb-4" aria-label="Ciudad" onChange={(e) => setCiudad(e.target.value)} value={ciudad}>
+            <Form.Control type="text" className="d-inline w-50 ms-3 mb-4" aria-label="Ciudad" placeholder="Ej. San Miguel de Tucumán" onChange={(e) => setCiudad(e.target.value)} value={ciudad}>
             </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3 d-flex justify-content-center">
